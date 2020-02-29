@@ -66,13 +66,6 @@ rownames(moda_promedio)[1];
 barplot(moda_promedio, xlab = "Notas", ylab = "Frecuencia", main = "Frecuencia de notas Ingenierias")
 
 #Datos Sexo Ingenieria --------------------------------------------------------------------------------------------------
-#Media
-#mean(datos_ing$Sexo)
-#Desviacion Estandar
-#sd(datos_ing$Sexo)
-#Mediana 
-#sort(datos_ing$Sexo)
-#median(datos_ing$Sexo)
 #Frecuencia
 frecuencia_sexo<-table(datos_ing$Sexo)
 frecuencia_sexo
@@ -85,13 +78,6 @@ barplot(moda_sexo, xlab = "Sexo", ylab = "Frecuencia", main = "Frecuencia de sex
 
 
 #Datos Sexo Nombre Programa --------------------------------------------------------------------------------------------------
-#Media
-#mean(datos_ing$Nombre_Programa)
-#Desviacion Estandar
-#sd(datos_ing$Nombre_Programa)
-#Mediana 
-#sort(datos_ing$Nombre_Programa)
-#median(datos_ing$Nombre_Programa)
 #Frecuencia
 frecuencia_programa<-table(datos_ing$Nombre_Programa)
 frecuencia_programa
@@ -104,7 +90,11 @@ barplot(moda_programa, xlab = "Programa", ylab = "Frecuencia", main = "Frecuenci
 
 #Tabla COntingencia ------------------------------------------------------------------------------------------------------
 table(datos_ing$Sexo,datos_ing$Promedio)
-table(datos_ing$Nombre_Programa)
+table(datos_ing$Nombre_Programa, datos_ing$Promedio)
+table(datos_ing$Sexo, datos_ing$Nombre_Programa)
 prop.table(datos_ing$Nombre_Programa)
 
 
+datos_ing$Rendimiento[datos_ing$Promedio<3.5] <- "bajo"
+datos_ing$Rendimiento[datos_ing$Promedio>=3.5 & datos_ing$Promedio<=4.0] <- "medio"
+datos_ing$Rendimiento[datos_ing$Promedio>4.0] <- "alto"
