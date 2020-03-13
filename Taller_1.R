@@ -81,9 +81,23 @@ PROM_AMB
 PROM_AMB2 <- prop.table(AMB_TAB, 2)*100
 PROM_AMB2
 
+#Media de promedios en Mujeres
+mf <- mean(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo=="F"])
+mf
+
+#Media de promedios en Hombres
+mh <- mean(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo=="M"])
+mh
+
+#Desviacion estandar
+sd(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo=="F"])
+sd(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo=="M"])
+
+#Color de histogramas
 c1 <- rgb(255,0,0,max = 255, alpha = 80, names = "lt.blue")
 c2 <- rgb(0,0,255, max = 255, alpha = 80, names = "lt.pink")
 
+#Histogramas de frecuenciaS
 ha <- hist(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo == "F"],
            breaks = c(3.4, 3.5, 3.6, 3.7, 3.8, 3.9, 4.0),
            include.lowest = TRUE,
@@ -110,11 +124,14 @@ plot(ha, col = c1,
      ylab = "GRADUADOS")
 plot(hb, col = c2, add = TRUE)
 
-mf <- mean(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo=="F"])
-mf
+legend("topleft", legend=c("F", "M"), lwd=4, col=c(c1, c2))
 
-mh <- mean(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo=="M"])
-mh
+#Mediana de calificaciones de mujeres
+sort(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo=="F"])
+median(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo=="F"])
 
+#Mediana de calificaciones de hombres
+sort(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo=="M"])
+median(LIC_NAT_AMB$calificacion[LIC_NAT_AMB$sexo=="M"])
 
 
