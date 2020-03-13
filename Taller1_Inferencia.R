@@ -58,8 +58,10 @@ sex_nombre<-table(datos_ing$Sexo, datos_ing$Nombre_Programa)
 #Tabla de frecuencia relativas marginales
 prop.table(sex_prom)
 #Para Filas
-prop.table(sex_prom,1)
-rowSums(prop.table(sex_prom,1))
+prop_sex_prom_row<-prop.table(sex_prom,1)
+prop_sex_prom_row
+addmargins(prop_sex_prom_row)
 #Para Columnas
-prop.table(sex_prom,2)
-colSums(prop.table(sex_prom,2))
+prop_sex_prom_col<-prop.table(sex_prom,2)
+prop_sex_prom_col
+addmargins(prop_sex_prom_col)
